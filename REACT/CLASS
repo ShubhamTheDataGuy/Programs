@@ -1,0 +1,33 @@
+import React, { Component } from 'react';
+
+class Counter extends Component {
+    state = { count: 0 };
+
+    increase = () => this.setState({ count: this.state.count + 1 });
+    decrease = () => this.setState({ count: this.state.count - 1 });
+
+    render() {
+        return (
+            <div>
+                <h2>{this.state.count}</h2>
+                <button onClick={this.increase}>+</button>
+                <button onClick={this.decrease}>-</button>
+            </div>
+        );
+    }
+}
+
+export default Counter;
+
+import React from 'react';
+import Counter from './Counter';
+
+function App() {
+    return (
+        <div>
+            <Counter />
+        </div>
+    );
+}
+
+export default App;

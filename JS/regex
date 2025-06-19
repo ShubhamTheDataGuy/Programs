@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 300px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Registration Form</h2>
+
+  <form id="myForm">
+    <label>Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+    <div id="nameError" class="error"></div>
+
+    <label>Email:</label>
+    <input type="text" id="email" placeholder="Enter your email">
+    <div id="emailError" class="error"></div>
+
+    <label>Password:</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <div id="passwordError" class="error"></div>
+
+    <button type="button" onclick="validateForm()">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      // Get input values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Get error fields
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+
+      // Clear previous errors
+      nameError.textContent = "";
+      emailError.textContent = "";
+      passwordError.textContent = "";
+
+      let valid = true;
+
+      // Name validation
+      const nameRegex = /^[A-Za-z ]{2,}$/;
+      if (!nameRegex.test(name)) {
+        nameError.textContent = "Name must contain only letters and be at least 2 characters.";
+        valid = false;
+      }
+
+      // Email validation
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        emailError.textContent = "Enter a valid email address.";
+        valid = false;
+      }
+
+      // Password validation
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&]).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        passwordError.textContent = "Password must be 8+ characters with uppercase, lowercase, number, and special character.";
+        valid = false;
+      }
+
+      // Final output
+      if (valid) {
+        alert("Form submitted successfully!");
+      }
+    }
+  </script>
+
+</body>
+</html>

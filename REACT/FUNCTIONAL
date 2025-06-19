@@ -1,27 +1,42 @@
-import React from 'react';
+<!DOCTYPE html>
+<html>
+<body>
 
-function Greeting(props) {
-    return (
-        <div>
-            <h2>Hello, {props.name}!</h2>
-            <p>Welcome to the {props.course} course.</p>
-        </div>
-    );
+<p>What is 2 + 2?</p>
+
+<input type="radio" class="option" name="q" value="3">3<br>
+<input type="radio" class="option" name="q" value="4">4<br>
+<input type="radio" class="option" name="q" value="5">5<br>
+<input type="radio" class="option" name="q" value="6">6<br><br>
+
+<button onclick="check()">Check Answer</button>
+
+<p id="out"></p>
+
+<script>
+function check() {
+  const options = document.getElementsByClassName("option");
+  let selected = null;
+
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].checked) {
+      selected = options[i].value;
+      break;
+    }
+  }
+
+  const correct = "4";
+  const output = document.getElementById("out");
+
+  if (selected === null) {
+    output.innerText = "Please select an answer.";
+  } else if (selected === correct) {
+    output.innerText = "Correct!";
+  } else {
+    output.innerText = "Wrong!";
+  }
 }
+</script>
 
-export default Greeting;
-
-
-
-import React from 'react';
-import Greeting from './Greeting';
-
-function App() {
-    return (
-        <div>
-            <Greeting name="Shubham" course="react" />
-        </div>
-    );
-}
-
-export default App;
+</body>
+</html>

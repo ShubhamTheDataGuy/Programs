@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="first.php" method="post">
+        <label>
+            NAME:
+            <input id="user_name" name="name" type="text">
+        </label><br><br>
+        <label>
+            EMAIL:
+            <input id="user_email" name="email" type="email">
+        </label><br><br>
+        <label>
+            PASSWORD:
+            <input id="user_password" name="password" type="password">
+        </label><br><br>
+        <h3>GENDER</h3>
+        <label>
+             MALE:
+            <input id="male" name="gender" type="radio" value="male">
+        </label>
+        <label>
+            FEMALE:
+            <input id="female" name="gender" type="radio" value="female">
+        </label><br><br>
+        <label>
+            PHONE NUMBER:
+            <input id="user_phone_number" name="phno" type="tel">
+        </label>
+        <h3>skills</h3>
+        <label>
+            html:
+             <input id="html_skill" name="skill[]" value="html" type="checkbox">
+        </label>
+        <label>
+            css:
+             <input id="css_skill" name="skill[]" value="css" type="checkbox">
+        </label>
+        <label>
+            javascript:
+             <input id="javascript_skill" name="skill[]" value="javascript" type="checkbox">
+        </label><br><br>
+        <label>
+            COUNTRY:
+            <select name="country">
+                <option value="india">INDIA</option>
+                <option value="usa">USA</option>
+            </select>
+        </label><br><br>
+        <label>
+            <input name="submit" type="submit" value="submit">
+        </label>
+    </form>
+</body>
+</html>

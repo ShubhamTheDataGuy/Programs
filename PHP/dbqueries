@@ -1,0 +1,16 @@
+CREATE DATABASE company_db;
+CREATE TABLE pers (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    dno INT(11),
+    job VARCHAR(30),
+    salary DECIMAL(10,2),
+    hire_date DATE
+);
+
+INSERT INTO pers (name, dno, job, salary, hire_date) VALUES
+('Alice Johnson', 101, 'Manager', 75000.50, '2021-03-15'),
+('Bob Smith', 102, 'Developer', 55000.00, '2022-06-20'),
+('Charlie Davis', 101, 'Analyst', 48000.75, '2023-01-10'),
+('Diana Lee', 103, 'HR Executive', 46000.00, '2020-11-05'),
+('Ethan Brown', 102, 'Developer', 60000.00, '2024-02-28');

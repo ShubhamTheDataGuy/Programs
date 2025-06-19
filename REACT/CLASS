@@ -1,33 +1,57 @@
-import React, { Component } from 'react';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <form action="validate.php" method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name"><br><br>
 
-class Counter extends Component {
-    state = { count: 0 };
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
 
-    increase = () => this.setState({ count: this.state.count + 1 });
-    decrease = () => this.setState({ count: this.state.count - 1 });
+        <label>Password:</label><br>
+        <input type="password" name="password"><br><br>
 
-    render() {
-        return (
-            <div>
-                <h2>{this.state.count}</h2>
-                <button onClick={this.increase}>+</button>
-                <button onClick={this.decrease}>-</button>
-            </div>
-        );
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name     = trim($_POST["name"]);
+    $email    = trim($_POST["email"]);
+    $password = $_POST["password"];
+
+    $errors = [];
+
+    // Name validation
+    if (empty($name)) {
+        $errors[] = "Name cannot be empty.";
     }
+
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+
+    // Password validation
+    if (strlen($password) <= 16) {
+        $errors[] = "Password must be longer than 16 characters.";
+    }
+
+    if (empty($errors)) {
+        echo "✅ All inputs are valid!";
+    } else {
+        echo "<ul>";
+        foreach ($errors as $error) {
+            echo "<li>❌ " . htmlspecialchars($error) . "</li>";
+        }
+        echo "</ul>";
+    }
+} else {
+    echo "Form was not submitted properly.";
 }
-
-export default Counter;
-
-import React from 'react';
-import Counter from './Counter';
-
-function App() {
-    return (
-        <div>
-            <Counter />
-        </div>
-    );
-}
-
-export default App;
+?>
